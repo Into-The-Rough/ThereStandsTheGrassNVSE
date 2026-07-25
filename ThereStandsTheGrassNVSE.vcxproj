@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3C8F1A27-9D45-4B82-B6E3-A75D0C41F868}</ProjectGuid>
+    <RootNamespace>ThereStandsTheGrassNVSE</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectName>ThereStandsTheGrassNVSE</ProjectName>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.30501.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>ThereStandsTheGrassNVSE</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
+    <TargetName>ThereStandsTheGrassNVSE</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\NVSE-Plugins-main;$(ProjectDir)..\NVSE-Plugins-main\nvse;$(ProjectDir)..\NVSE-Plugins-main\nvse\nvse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;RUNTIME_VERSION=0x040020D0;RUNTIME;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <ForcedIncludeFiles>nvse/prefix.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <ConformanceMode>false</ConformanceMode>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <ModuleDefinitionFile>exports.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Message>Installing DLL and config to VNV mods...</Message>
+      <Command>if not exist "D:\Modding\VNV\mods\There Stands the Grass\NVSE\Plugins" mkdir "D:\Modding\VNV\mods\There Stands the Grass\NVSE\Plugins"
+copy "$(TargetPath)" "D:\Modding\VNV\mods\There Stands the Grass\NVSE\Plugins\$(TargetFileName)"
+copy "$(TargetDir)$(TargetName).pdb" "D:\Modding\VNV\mods\There Stands the Grass\NVSE\Plugins\$(TargetName).pdb"
+if not exist "D:\Modding\VNV\mods\There Stands the Grass\config" mkdir "D:\Modding\VNV\mods\There Stands the Grass\config"
+if not exist "D:\Modding\VNV\mods\There Stands the Grass\config\ThereStandsTheGrassNVSE.ini" copy "$(ProjectDir)config\ThereStandsTheGrassNVSE.ini" "D:\Modding\VNV\mods\There Stands the Grass\config\ThereStandsTheGrassNVSE.ini"
+if not exist "D:\Modding\VNV\mods\There Stands the Grass\MCM" mkdir "D:\Modding\VNV\mods\There Stands the Grass\MCM"
+copy "$(ProjectDir)MCM\ThereStandsTheGrass.json" "D:\Modding\VNV\mods\There Stands the Grass\MCM\ThereStandsTheGrass.json"
+xcopy /y /e /i "$(ProjectDir)resources\NVSE" "D:\Modding\VNV\mods\There Stands the Grass\NVSE"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MinSpace</Optimization>
+      <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\NVSE-Plugins-main;$(ProjectDir)..\NVSE-Plugins-main\nvse;$(ProjectDir)..\NVSE-Plugins-main\nvse\nvse;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;RUNTIME_VERSION=0x040020D0;RUNTIME;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ForcedIncludeFiles>nvse/prefix.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <ConformanceMode>false</ConformanceMode>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <ModuleDefinitionFile>exports.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Message>Installing DLL and config to VNV mods...</Message>
+      <Command>if not exist "D:\Modding\VNV\mods\There Stands the Grass\NVSE\Plugins" mkdir "D:\Modding\VNV\mods\There Stands the Grass\NVSE\Plugins"
+copy "$(TargetPath)" "D:\Modding\VNV\mods\There Stands the Grass\NVSE\Plugins\$(TargetFileName)"
+copy "$(TargetDir)$(TargetName).pdb" "D:\Modding\VNV\mods\There Stands the Grass\NVSE\Plugins\$(TargetName).pdb"
+if not exist "D:\Modding\VNV\mods\There Stands the Grass\config" mkdir "D:\Modding\VNV\mods\There Stands the Grass\config"
+if not exist "D:\Modding\VNV\mods\There Stands the Grass\config\ThereStandsTheGrassNVSE.ini" copy "$(ProjectDir)config\ThereStandsTheGrassNVSE.ini" "D:\Modding\VNV\mods\There Stands the Grass\config\ThereStandsTheGrassNVSE.ini"
+if not exist "D:\Modding\VNV\mods\There Stands the Grass\MCM" mkdir "D:\Modding\VNV\mods\There Stands the Grass\MCM"
+copy "$(ProjectDir)MCM\ThereStandsTheGrass.json" "D:\Modding\VNV\mods\There Stands the Grass\MCM\ThereStandsTheGrass.json"
+xcopy /y /e /i "$(ProjectDir)resources\NVSE" "D:\Modding\VNV\mods\There Stands the Grass\NVSE"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="core\Common.h" />
+    <ClInclude Include="core\Config.h" />
+    <ClInclude Include="core\EngineLayout.h" />
+    <ClInclude Include="core\PlayerBend.h" />
+    <ClInclude Include="core\ShaderPatch.h" />
+    <ClInclude Include="features\GrassBend.h" />
+    <ClInclude Include="features\TreeBend.h" />
+    <ClInclude Include="features\FoliagePush.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="core\Config.cpp" />
+    <ClCompile Include="core\PlayerBend.cpp" />
+    <ClCompile Include="core\ShaderPatch.cpp" />
+    <ClCompile Include="features\GrassBend.cpp" />
+    <ClCompile Include="features\TreeBend.cpp" />
+    <ClCompile Include="features\FoliagePush.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="exports.def" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

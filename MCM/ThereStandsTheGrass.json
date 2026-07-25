@@ -1,0 +1,233 @@
+{
+	"modName": "ThereStandsTheGrassNVSE",
+	"displayName": "There Stands the Grass",
+	"description": "Grass, shrubs and desert plants bend away as you move through them",
+	"saveFile": "ThereStandsTheGrassNVSE.ini",
+	"minMCMVersion": 1.0,
+	"minModVersion": 1.0,
+	"requirements": [
+		{
+			"type": "file",
+			"file": "NVSE/Plugins/scripts/ln_therestandsthegrass-mcm.txt"
+		}
+	],
+	"submenus": {
+		"1": {
+			"listTitle": "There Stands the Grass",
+			"pageTitle": "Grass Interaction",
+			"columns": 1,
+			"active": 1,
+			"enable": 1,
+			"options": {
+				"1": {
+					"title": "General",
+					"type": 0,
+					"enable": 1
+				},
+				"2": {
+					"title": "Enable Grass Bending",
+					"type": 5,
+					"enable": 1,
+					"mouse": "Grass leans away from you as you move through it",
+					"vars": [
+						{
+							"configINI": "General:bEnabled",
+							"default": 1
+						}
+					]
+				},
+				"3": {
+					"title": "Bend",
+					"type": 0,
+					"enable": 1
+				},
+				"4": {
+					"title": "Standing Strength",
+					"type": 2,
+					"enable": 1,
+					"mouse": "Base bend strength while standing. Rendered blade-height response is scaled to 50%",
+					"vars": [
+						{
+							"configINI": "Interaction:fStrengthStanding",
+							"default": 120
+						}
+					],
+					"scale": {
+						"valueDecimal": 0,
+						"valueIncrement": 5,
+						"valueMin": 0,
+						"valueMax": 300
+					}
+				},
+				"5": {
+					"title": "Running Strength",
+					"type": 2,
+					"enable": 1,
+					"mouse": "Base bend strength at full running speed. Rendered blade-height response is scaled to 50%",
+					"vars": [
+						{
+							"configINI": "Interaction:fStrengthMax",
+							"default": 150
+						}
+					],
+					"scale": {
+						"valueDecimal": 0,
+						"valueIncrement": 5,
+						"valueMin": 0,
+						"valueMax": 300
+					}
+				},
+				"6": {
+					"title": "Radius",
+					"type": 2,
+					"enable": 1,
+					"mouse": "How far from you grass reacts, in units. Does not change how hard it bends up close",
+					"vars": [
+						{
+							"configINI": "Interaction:fRadius",
+							"default": 100
+						}
+					],
+					"scale": {
+						"valueDecimal": 0,
+						"valueIncrement": 10,
+						"valueMin": 20,
+						"valueMax": 600
+					}
+				},
+				"7": {
+					"title": "Response",
+					"type": 0,
+					"enable": 1
+				},
+				"8": {
+					"title": "Speed For Full Push",
+					"type": 2,
+					"enable": 1,
+					"mouse": "Movement speed at which Running Strength is reached",
+					"vars": [
+						{
+							"configINI": "Interaction:fSpeedForMax",
+							"default": 300
+						}
+					],
+					"scale": {
+						"valueDecimal": 0,
+						"valueIncrement": 25,
+						"valueMin": 50,
+						"valueMax": 1000
+					}
+				},
+				"9": {
+					"title": "Spring Back",
+					"type": 2.5,
+					"enable": 1,
+					"mouse": "Seconds for grass to recover after you slow down or move away",
+					"vars": [
+						{
+							"configINI": "Interaction:fSpringBackSeconds",
+							"default": 0.5
+						}
+					],
+					"scale": {
+						"valueDecimal": 2,
+						"valueIncrement": 0.05,
+						"valueMin": 0.05,
+						"valueMax": 3.0,
+						"suffix": "s"
+					}
+				},
+				"10": {
+					"title": "Follow Lag",
+					"type": 2.5,
+					"enable": 1,
+					"mouse": "Seconds of lag before the bend centre catches up to you. Higher trails further behind",
+					"vars": [
+						{
+							"configINI": "Interaction:fPositionLagSeconds",
+							"default": 0.08
+						}
+					],
+					"scale": {
+						"valueDecimal": 2,
+						"valueIncrement": 0.01,
+						"valueMin": 0.01,
+						"valueMax": 1.0,
+						"suffix": "s"
+					}
+				},
+				"11": {
+					"title": "Trees and Shrubs",
+					"type": 0,
+					"enable": 1
+				},
+				"12": {
+					"title": "Enable Tree Bending",
+					"type": 5,
+					"enable": 1,
+					"mouse": "Bend speedtree shrubs as well as grass - WastelandShrub01 is the common Mojave one",
+					"vars": [
+						{
+							"configINI": "Trees:bTrees",
+							"default": 1
+						}
+					]
+				},
+				"13": {
+					"title": "Tree Strength",
+					"type": 2.5,
+					"enable": 1,
+					"mouse": "Fraction of the grass push applied to shrubs",
+					"vars": [
+						{
+							"configINI": "Trees:fTreeStrengthScale",
+							"default": 0.8
+						}
+					],
+					"scale": {
+						"valueDecimal": 2,
+						"valueIncrement": 0.05,
+						"valueMin": 0,
+						"valueMax": 3.0
+					}
+				},
+				"14": {
+					"title": "Tree Radius",
+					"type": 2,
+					"enable": 1,
+					"mouse": "How far from you shrubs react, in units",
+					"vars": [
+						{
+							"configINI": "Trees:fTreeRadius",
+							"default": 160
+						}
+					],
+					"scale": {
+						"valueDecimal": 0,
+						"valueIncrement": 10,
+						"valueMin": 20,
+						"valueMax": 600
+					}
+				},
+				"15": {
+					"title": "Plant Height",
+					"type": 2,
+					"enable": 1,
+					"mouse": "Plant height in units - the lean reaches full strength here so the base stays planted",
+					"vars": [
+						{
+							"configINI": "Trees:fTreeHeight",
+							"default": 175
+						}
+					],
+					"scale": {
+						"valueDecimal": 0,
+						"valueIncrement": 5,
+						"valueMin": 20,
+						"valueMax": 600
+					}
+				}
+			}
+		}
+	}
+}

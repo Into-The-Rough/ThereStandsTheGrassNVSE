@@ -1,0 +1,9 @@
+Release/
+.vs/
+*.user
+shaders/disasm/
+shaders/vanilla/
+shaders/patched/
+shaders/__pycache__/
+nexus_description.bbcode
+*.bbcode
