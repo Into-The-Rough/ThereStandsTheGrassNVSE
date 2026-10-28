@@ -85,10 +85,10 @@
 copy "$(TargetPath)" "D:\Modding\VNV\mods\There Stands the Grass\NVSE\Plugins\$(TargetFileName)"
 copy "$(TargetDir)$(TargetName).pdb" "D:\Modding\VNV\mods\There Stands the Grass\NVSE\Plugins\$(TargetName).pdb"
 if not exist "D:\Modding\VNV\mods\There Stands the Grass\config" mkdir "D:\Modding\VNV\mods\There Stands the Grass\config"
-if not exist "D:\Modding\VNV\mods\There Stands the Grass\config\ThereStandsTheGrassNVSE.ini" copy "$(ProjectDir)config\ThereStandsTheGrassNVSE.ini" "D:\Modding\VNV\mods\There Stands the Grass\config\ThereStandsTheGrassNVSE.ini"
+if not exist "D:\Modding\VNV\mods\There Stands the Grass\config\ThereStandsTheGrassNVSE.ini" copy "$(ProjectDir)mod\config\ThereStandsTheGrassNVSE.ini" "D:\Modding\VNV\mods\There Stands the Grass\config\ThereStandsTheGrassNVSE.ini"
 if not exist "D:\Modding\VNV\mods\There Stands the Grass\MCM" mkdir "D:\Modding\VNV\mods\There Stands the Grass\MCM"
-copy "$(ProjectDir)MCM\ThereStandsTheGrass.json" "D:\Modding\VNV\mods\There Stands the Grass\MCM\ThereStandsTheGrass.json"
-xcopy /y /e /i "$(ProjectDir)resources\NVSE" "D:\Modding\VNV\mods\There Stands the Grass\NVSE"</Command>
+copy "$(ProjectDir)mod\MCM\ThereStandsTheGrass.json" "D:\Modding\VNV\mods\There Stands the Grass\MCM\ThereStandsTheGrass.json"
+xcopy /y /e /i "$(ProjectDir)mod\NVSE" "D:\Modding\VNV\mods\There Stands the Grass\NVSE"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -122,10 +122,10 @@ xcopy /y /e /i "$(ProjectDir)resources\NVSE" "D:\Modding\VNV\mods\There Stands t
 copy "$(TargetPath)" "D:\Modding\VNV\mods\There Stands the Grass\NVSE\Plugins\$(TargetFileName)"
 copy "$(TargetDir)$(TargetName).pdb" "D:\Modding\VNV\mods\There Stands the Grass\NVSE\Plugins\$(TargetName).pdb"
 if not exist "D:\Modding\VNV\mods\There Stands the Grass\config" mkdir "D:\Modding\VNV\mods\There Stands the Grass\config"
-if not exist "D:\Modding\VNV\mods\There Stands the Grass\config\ThereStandsTheGrassNVSE.ini" copy "$(ProjectDir)config\ThereStandsTheGrassNVSE.ini" "D:\Modding\VNV\mods\There Stands the Grass\config\ThereStandsTheGrassNVSE.ini"
+if not exist "D:\Modding\VNV\mods\There Stands the Grass\config\ThereStandsTheGrassNVSE.ini" copy "$(ProjectDir)mod\config\ThereStandsTheGrassNVSE.ini" "D:\Modding\VNV\mods\There Stands the Grass\config\ThereStandsTheGrassNVSE.ini"
 if not exist "D:\Modding\VNV\mods\There Stands the Grass\MCM" mkdir "D:\Modding\VNV\mods\There Stands the Grass\MCM"
-copy "$(ProjectDir)MCM\ThereStandsTheGrass.json" "D:\Modding\VNV\mods\There Stands the Grass\MCM\ThereStandsTheGrass.json"
-xcopy /y /e /i "$(ProjectDir)resources\NVSE" "D:\Modding\VNV\mods\There Stands the Grass\NVSE"</Command>
+copy "$(ProjectDir)mod\MCM\ThereStandsTheGrass.json" "D:\Modding\VNV\mods\There Stands the Grass\MCM\ThereStandsTheGrass.json"
+xcopy /y /e /i "$(ProjectDir)mod\NVSE" "D:\Modding\VNV\mods\There Stands the Grass\NVSE"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -153,4 +153,8 @@ xcopy /y /e /i "$(ProjectDir)resources\NVSE" "D:\Modding\VNV\mods\There Stands t
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <Target Name="StageMod" BeforeTargets="PostBuildEvent" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <MakeDir Directories="$(ProjectDir)mod\NVSE\Plugins" />
+    <Copy SourceFiles="$(TargetPath);$(TargetDir)$(TargetName).pdb" DestinationFolder="$(ProjectDir)mod\NVSE\Plugins" SkipUnchangedFiles="true" />
+  </Target>
 </Project>
